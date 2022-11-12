@@ -2,6 +2,8 @@
 
 An experimental emulator of the IBM Gekko processor, which can then be used in the GAMECUBE emulator.
 
+![1746021](/imgstore/1746021.png)
+
 Goals:
 - L1 cache and data cache locking support
 - Paired Singles
