@@ -5,6 +5,7 @@ An experimental emulator of the IBM Gekko processor, which can then be used in t
 ![gekkocore_icon](/imgstore/gekkocore_icon.png)
 
 Goals:
+- Cycle-accurate (Wait.. What?)
 - L1 cache and data cache locking support
 - Paired Singles
 - Interpreter
