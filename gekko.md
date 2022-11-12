@@ -26,7 +26,7 @@ fetch access hits the BTIC, it provides the first two instructions in the target
 	- Hardware support for denormalized numbers
 	- Two-entry reservation station
 	- Thirty-two 64-bit FPRs for single-, paired single- or double-precision operands.
-	- Two-stage LSU
+- Two-stage LSU
 	- Two-entry reservation station
 	- Single-cycle, pipelined cache access
 	- Dedicated adder performs EA calculations
