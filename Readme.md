@@ -6,7 +6,7 @@ An experimental emulator of the IBM Gekko processor, which can then be used in t
 
 Goals:
 - Cycle-accurate (Wait.. What?)
-- L1 cache and data cache locking support
+- L1 cache and data cache DMA support
 - Paired Singles
 - Interpreter
 - Simple dynamic recompiler for x86/x64 code
