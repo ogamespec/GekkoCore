@@ -11,6 +11,8 @@ namespace GekkoCoreUnitTest
 		
 		TEST_METHOD(TestMethod1)
 		{
+			Gekko::GekkoCore* core = new Gekko::GekkoCore();
+			delete core;
 		}
 	};
 }
