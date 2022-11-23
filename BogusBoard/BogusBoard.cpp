@@ -6,6 +6,8 @@ uint8_t* BootROM;
 
 void HWInit()
 {
+	Debug::Report("HWInit\n");
+
 	RAM = new uint8_t[RAM_SIZE];
 	memset(RAM, 0, RAM_SIZE);
 
@@ -15,6 +17,8 @@ void HWInit()
 
 void HWShutdown()
 {
+	Debug::Report("HWShutdown\n");
+
 	delete[] RAM;
 	delete[] BootROM;
 }
@@ -24,6 +28,8 @@ namespace Gekko
 	void SixtyBus_ReadByte(uint32_t phys_addr, uint32_t* reg)
 	{
 		uint8_t* ptr;
+
+		Debug::Report("60x Read Byte: 0x%08X\n", phys_addr);
 
 		if (phys_addr >= BOOTROM_START_ADDRESS)
 		{
@@ -46,6 +52,8 @@ namespace Gekko
 	{
 		uint8_t* ptr;
 
+		Debug::Report("60x Write Byte: 0x%08X = 0x%02X\n", phys_addr, (uint8_t)data);
+
 		if (phys_addr < RAM_SIZE)
 		{
 			ptr = &RAM[phys_addr];
@@ -56,6 +64,8 @@ namespace Gekko
 	void SixtyBus_ReadHalf(uint32_t phys_addr, uint32_t* reg)
 	{
 		uint8_t* ptr;
+
+		Debug::Report("60x Read UInt16: 0x%08X\n", phys_addr);
 
 		if (phys_addr >= BOOTROM_START_ADDRESS)
 		{
@@ -77,6 +87,8 @@ namespace Gekko
 	{
 		uint8_t* ptr;
 
+		Debug::Report("60x Write UInt16: 0x%08X = 0x%04X\n", phys_addr, (uint16_t)data);
+
 		if (phys_addr < RAM_SIZE)
 		{
 			ptr = &RAM[phys_addr];
@@ -87,6 +99,8 @@ namespace Gekko
 	void SixtyBus_ReadWord(uint32_t phys_addr, uint32_t* reg)
 	{
 		uint8_t* ptr;
+
+		Debug::Report("60x Read UInt32: 0x%08X\n", phys_addr);
 
 		if (phys_addr < RAM_SIZE)
 		{
@@ -108,6 +122,8 @@ namespace Gekko
 	{
 		uint8_t* ptr;
 
+		Debug::Report("60x Write UInt32: 0x%08X = 0x%08X\n", phys_addr, data);
+
 		if (phys_addr < RAM_SIZE)
 		{
 			ptr = &RAM[phys_addr];
@@ -117,6 +133,8 @@ namespace Gekko
 
 	void SixtyBus_ReadDouble(uint32_t phys_addr, uint64_t* reg)
 	{
+		Debug::Report("60x Read UInt64: 0x%08X\n", phys_addr);
+
 		if (phys_addr < RAM_SIZE)
 		{
 			uint8_t* buf = &RAM[phys_addr];
@@ -130,6 +148,8 @@ namespace Gekko
 
 	void SixtyBus_WriteDouble(uint32_t phys_addr, uint64_t* data)
 	{
+		Debug::Report("60x Write UInt64: 0x%08X = 0x%llX\n", phys_addr, *data);
+
 		if (phys_addr < RAM_SIZE)
 		{
 			uint8_t* buf = &RAM[phys_addr];
@@ -139,6 +159,8 @@ namespace Gekko
 
 	void SixtyBus_ReadBurst(uint32_t phys_addr, uint8_t burstData[BURST_SIZE])
 	{
+		Debug::Report("60x Read Burst: 0x%08X\n", phys_addr);
+
 		if ((phys_addr + BURST_SIZE) <= RAM_SIZE)
 		{
 			memcpy(burstData, &RAM[phys_addr], BURST_SIZE);
@@ -151,6 +173,8 @@ namespace Gekko
 
 	void SixtyBus_WriteBurst(uint32_t phys_addr, uint8_t burstData[BURST_SIZE])
 	{
+		Debug::Report("60x Write Burst: 0x%08X\n", phys_addr);
+
 		if ((phys_addr + BURST_SIZE) <= RAM_SIZE)
 		{
 			memcpy(&RAM[phys_addr], burstData, BURST_SIZE);
