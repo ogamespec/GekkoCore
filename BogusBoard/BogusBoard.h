@@ -9,6 +9,8 @@
 
 #define UNMAPPED_VALUE 0
 
+#define BURST_SIZE 32
+
 void HWInit();
 void HWShutdown();
 

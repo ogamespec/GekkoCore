@@ -137,23 +137,23 @@ namespace Gekko
 		}
 	}
 
-	void SixtyBus_ReadBurst(uint32_t phys_addr, uint8_t burstData[32])
+	void SixtyBus_ReadBurst(uint32_t phys_addr, uint8_t burstData[BURST_SIZE])
 	{
-		if ((phys_addr + 32) <= RAM_SIZE)
+		if ((phys_addr + BURST_SIZE) <= RAM_SIZE)
 		{
-			memcpy(burstData, &RAM[phys_addr], 32);
+			memcpy(burstData, &RAM[phys_addr], BURST_SIZE);
 		}
 		else
 		{
-			memset(burstData, UNMAPPED_VALUE, 32);
+			memset(burstData, UNMAPPED_VALUE, BURST_SIZE);
 		}
 	}
 
-	void SixtyBus_WriteBurst(uint32_t phys_addr, uint8_t burstData[32])
+	void SixtyBus_WriteBurst(uint32_t phys_addr, uint8_t burstData[BURST_SIZE])
 	{
-		if ((phys_addr + 32) <= RAM_SIZE)
+		if ((phys_addr + BURST_SIZE) <= RAM_SIZE)
 		{
-			memcpy(&RAM[phys_addr], burstData, 32);
+			memcpy(&RAM[phys_addr], burstData, BURST_SIZE);
 		}
 	}
 }
