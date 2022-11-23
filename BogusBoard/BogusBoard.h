@@ -16,3 +16,5 @@ void HWShutdown();
 
 extern uint8_t* RAM;
 extern uint8_t* BootROM;
+
+void HWWriteByte(uint32_t vaddr, uint8_t data);

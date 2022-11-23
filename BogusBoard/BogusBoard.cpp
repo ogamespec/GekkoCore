@@ -23,6 +23,26 @@ void HWShutdown()
 	delete[] BootROM;
 }
 
+/// <summary>
+/// For Loader.
+/// </summary>
+/// <param name="vaddr"></param>
+/// <param name="data"></param>
+void HWWriteByte(uint32_t vaddr, uint8_t data)
+{
+	uint8_t* ptr;
+	if (vaddr >= BOOTROM_START_ADDRESS)
+	{
+		ptr = &BootROM[vaddr - BOOTROM_START_ADDRESS];
+		*ptr = data;
+	}
+	else
+	{
+		ptr = &RAM[vaddr & 0x0fff'ffff];
+		*ptr = data;
+	}
+}
+
 namespace Gekko
 {
 	void SixtyBus_ReadByte(uint32_t phys_addr, uint32_t* reg)
@@ -35,7 +55,6 @@ namespace Gekko
 		{
 			ptr = &BootROM[phys_addr - BOOTROM_START_ADDRESS];
 			*reg = (uint32_t)*ptr;
-			return;
 		}
 		else if (phys_addr < RAM_SIZE)
 		{

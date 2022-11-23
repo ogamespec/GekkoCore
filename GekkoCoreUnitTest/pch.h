@@ -18,3 +18,12 @@
 
 #include "MiniElf.h"
 #include "LoadElf.h"
+
+#define UnitTestOK 0x55aa
+#define UnitTestFAIL 0xaa55
+#define UnitTestCanaryAddress 0x100
+
+namespace Gekko
+{
+	void SixtyBus_ReadWord(uint32_t phys_addr, uint32_t* reg);
+}

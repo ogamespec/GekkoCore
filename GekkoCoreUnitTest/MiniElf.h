@@ -9,6 +9,8 @@ using ElfHalf = uint16_t;
 using ElfWord = uint32_t;
 using ElfSword = int32_t;
 
+#pragma pack(push, 1)
+
 struct ElfEhdr
 {
     uint8_t e_ident[16];
@@ -41,6 +43,8 @@ struct ElfPhdr
     ElfWord p_flags;
     ElfWord p_align;
 };
+
+#pragma pack(pop)
 
 enum ELF_IDENT
 {

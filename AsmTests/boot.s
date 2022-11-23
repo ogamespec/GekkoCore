@@ -7,9 +7,9 @@
 
 .align 256
 
-.global boot
+.global __start
 
-boot:
+__start:
 		lis         r4, 0x0011 
 		addi        r4, r4, 0x0C64
 		mtspr       HID0, r4

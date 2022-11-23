@@ -1819,6 +1819,7 @@ namespace Gekko
 		info->instrBits = instr;
 		info->pc = pc;
 		info->flow = false;
+		info->numParam = 0;
 
 		switch (instr >> 26)
 		{

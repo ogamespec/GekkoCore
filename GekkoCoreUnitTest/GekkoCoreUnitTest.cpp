@@ -9,7 +9,22 @@ namespace GekkoCoreUnitTest
 	{
 		void ExecuteUntilSyscall(Gekko::GekkoCore* core)
 		{
-			core->StepVerbose();
+			while (true)
+			{
+				core->StepVerbose();
+
+				if (core->regs.pc == (uint32_t)Gekko::Exception::EXCEPTION_SYSTEM_CALL)
+				{
+					break;
+				}
+			}
+		}
+
+		uint32_t GetCanary()
+		{
+			uint32_t val;
+			Gekko::SixtyBus_ReadWord(UnitTestCanaryAddress, &val);
+			return val;
 		}
 
 	public:
@@ -18,7 +33,7 @@ namespace GekkoCoreUnitTest
 		{
 			HWInit();
 			SetCurrentDirectoryA("./../../../../../../");
-			Assert::IsTrue(LoadElfFile("AsmTests/boot.o"));
+			Assert::IsTrue(LoadElfFile("AsmTests/boot.elf"));
 		}
 
 		TEST_METHOD_CLEANUP(ShutdownBoard)
@@ -34,9 +49,10 @@ namespace GekkoCoreUnitTest
 
 		TEST_METHOD(TestSimple)
 		{
-			Assert::IsTrue(LoadElfFile("AsmTests/simple.o"));
+			Assert::IsTrue(LoadElfFile("AsmTests/simple.elf"));
 			Gekko::GekkoCore* core = new Gekko::GekkoCore();
 			ExecuteUntilSyscall(core);
+			Assert::IsTrue(GetCanary() == UnitTestOK);
 			delete core;
 		}
 	};

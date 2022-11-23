@@ -110,6 +110,7 @@ namespace Gekko
         itlb.InvalidateAll();
         cache->Reset();
         Exception(Exception::EXCEPTION_SYSTEM_RESET);
+        exception = false;
     }
 
     // Modify CPU counters
@@ -172,7 +173,7 @@ namespace Gekko
     void GekkoCore::StepVerbose()
     {
         uint32_t old_pc = regs.pc;
-        Report("0x%08X:\n", old_pc);
+        Report("PC 0x%08X:\n", old_pc);
         interp->ExecuteOpcode();
         interp->DumpDecoderInfo(old_pc);
     }
