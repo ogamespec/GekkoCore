@@ -10,7 +10,7 @@ void HWInit()
 	memset(RAM, 0, RAM_SIZE);
 
 	BootROM = new uint8_t[BOOTROM_SIZE];
-	memset(BootROM, 0, BOOTROM_SIZE);
+	memset(BootROM, 0xff, BOOTROM_SIZE);
 }
 
 void HWShutdown()
