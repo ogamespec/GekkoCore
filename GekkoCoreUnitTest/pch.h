@@ -13,3 +13,8 @@
 #include "../Common/Jdi.h"
 
 #include "../GekkoCore/GekkoCore.h"
+
+#include "../BogusBoard/BogusBoard.h"
+
+#include "MiniElf.h"
+#include "LoadElf.h"

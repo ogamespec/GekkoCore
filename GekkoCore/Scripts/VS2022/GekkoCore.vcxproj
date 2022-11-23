@@ -120,7 +120,6 @@
     <ClInclude Include="..\..\Config.h" />
     <ClInclude Include="..\..\GatherBuffer.h" />
     <ClInclude Include="..\..\GekkoCore.h" />
-    <ClInclude Include="..\..\GekkoCore.h" />
     <ClInclude Include="..\..\GekkoDecoder.h" />
     <ClInclude Include="..\..\GekkoDefs.h" />
     <ClInclude Include="..\..\GekkoDisasm.h" />
