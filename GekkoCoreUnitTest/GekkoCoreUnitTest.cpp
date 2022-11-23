@@ -7,11 +7,18 @@ namespace GekkoCoreUnitTest
 {
 	TEST_CLASS(GekkoCoreUnitTest)
 	{
+		void ExecuteUntilSyscall(Gekko::GekkoCore* core)
+		{
+			core->StepVerbose();
+		}
+
 	public:
 		
 		TEST_METHOD_INITIALIZE(InitBoard)
 		{
 			HWInit();
+			SetCurrentDirectoryA("./../../../../../../");
+			Assert::IsTrue(LoadElfFile("AsmTests/boot.o"));
 		}
 
 		TEST_METHOD_CLEANUP(ShutdownBoard)
@@ -19,38 +26,18 @@ namespace GekkoCoreUnitTest
 			HWShutdown();
 		}
 
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TestCreateInstance)
 		{
 			Gekko::GekkoCore* core = new Gekko::GekkoCore();
 			delete core;
 		}
+
+		TEST_METHOD(TestSimple)
+		{
+			Assert::IsTrue(LoadElfFile("AsmTests/simple.o"));
+			Gekko::GekkoCore* core = new Gekko::GekkoCore();
+			ExecuteUntilSyscall(core);
+			delete core;
+		}
 	};
-}
-
-namespace Debug
-{
-	void Halt(const char* text, ...)
-	{
-		va_list arg;
-		char buf[0x1000] = { 0, };
-
-		va_start(arg, text);
-		vsprintf_s(buf, sizeof(buf), text, arg);
-		va_end(arg);
-
-		Logger::WriteMessage(buf);
-		Assert::Fail();
-	}
-
-	void Report(const char* text, ...)
-	{
-		va_list arg;
-		char buf[0x1000] = { 0, };
-
-		va_start(arg, text);
-		vsprintf_s(buf, sizeof(buf), text, arg);
-		va_end(arg);
-
-		Logger::WriteMessage(buf);
-	}
 }

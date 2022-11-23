@@ -109,6 +109,7 @@ namespace Gekko
         dtlb.InvalidateAll();
         itlb.InvalidateAll();
         cache->Reset();
+        Exception(Exception::EXCEPTION_SYSTEM_RESET);
     }
 
     // Modify CPU counters
@@ -166,6 +167,14 @@ namespace Gekko
     void GekkoCore::Step()
     {
         interp->ExecuteOpcode();
+    }
+
+    void GekkoCore::StepVerbose()
+    {
+        uint32_t old_pc = regs.pc;
+        Report("0x%08X:\n", old_pc);
+        interp->ExecuteOpcode();
+        interp->DumpDecoderInfo(old_pc);
     }
 
     void GekkoCore::AssertInterrupt()
@@ -271,6 +280,12 @@ namespace Gekko
 
         // change PC and set exception flag
         regs.pc = (uint32_t)code;
+
+        if (code == Exception::EXCEPTION_SYSTEM_RESET)
+        {
+            regs.pc |= 0xfff0'0000;
+        }
+
         exception = true;
     }
 
@@ -285,11 +300,25 @@ namespace Gekko
 
     void GekkoCore::Halt(const char* text, ...)
     {
+        va_list arg;
+        char buf[0x1000] = { 0, };
 
+        va_start(arg, text);
+        vsprintf_s(buf, sizeof(buf), text, arg);
+        va_end(arg);
+
+        Debug::Halt(buf);
     }
 
     void GekkoCore::Report(const char* text, ...)
     {
+        va_list arg;
+        char buf[0x1000] = { 0, };
 
+        va_start(arg, text);
+        vsprintf_s(buf, sizeof(buf), text, arg);
+        va_end(arg);
+
+        Debug::Report(buf);
     }
 }

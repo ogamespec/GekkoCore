@@ -595,4 +595,9 @@ namespace Gekko
         core->Halt("callvm: Temporary not implemented!\n");
     }
 
+    void Interpreter::DumpDecoderInfo(uint32_t old_pc)
+    {
+        auto text = GekkoDisasm::Disasm(old_pc, &info, false, true) + "\n";
+        core->Report(text.c_str());
+    }
 }

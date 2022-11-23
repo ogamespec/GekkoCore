@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DebugOutput.cpp" />
     <ClCompile Include="GekkoCoreUnitTest.cpp" />
     <ClCompile Include="LoadElf.cpp" />
     <ClCompile Include="pch.cpp">

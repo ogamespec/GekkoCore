@@ -234,6 +234,8 @@ namespace Gekko
         void Halt(const char* text, ...);
         void Report(const char* text, ...);
 
+        void StepVerbose();
+
 #pragma endregion "Debug"
 
     };

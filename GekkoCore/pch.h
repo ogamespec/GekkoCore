@@ -31,3 +31,9 @@
 #ifdef _LINUX
 #define _stricmp strcasecmp
 #endif
+
+namespace Debug
+{
+	void Halt(const char* text, ...);
+	void Report(const char* text, ...);
+}

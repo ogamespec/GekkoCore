@@ -419,6 +419,8 @@ namespace Gekko
 		bool ExecuteInterpeterFallback();
 
 		uint32_t GetRotMask(int mb, int me);
+
+		void DumpDecoderInfo(uint32_t old_pc);
 	};
 
 }
