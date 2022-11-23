@@ -81,7 +81,7 @@ namespace Gekko
     /// <param name="sa">Rotate bits amount</param>
     /// <param name="data">Source</param>
     /// <returns>Result</returns>
-    uint32_t Interpreter::Rotl32(int sa, uint32_t data)
+    uint32_t Interpreter::Rotl32(size_t sa, uint32_t data)
     {
         return (data << sa) | (data >> ((32 - sa) & 31));
     }

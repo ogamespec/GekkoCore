@@ -76,7 +76,7 @@ namespace Gekko
 
 		if (core->regs.msr & MSR_FP)
 		{
-			int i = info.paramBits[4];
+			size_t i = info.paramBits[4];
 			uint32_t EA = core->regs.gpr[info.paramBits[2]], data0, data1;
 			int32_t d = info.paramBits[0];
 			uint8_t scale = (uint8_t)LD_SCALE(i);
@@ -130,7 +130,7 @@ namespace Gekko
 
 		if (core->regs.msr & MSR_FP)
 		{
-			int i = info.paramBits[4];
+			size_t i = info.paramBits[4];
 			uint32_t EA = core->regs.gpr[info.paramBits[2]];
 			int32_t d = info.paramBits[0];
 			uint8_t scale = (uint8_t)ST_SCALE(i);
@@ -177,7 +177,7 @@ namespace Gekko
 
 		if (core->regs.msr & MSR_FP)
 		{
-			int i = info.paramBits[4];
+			size_t i = info.paramBits[4];
 			uint32_t EA = core->regs.gpr[info.paramBits[2]], data0, data1;
 			int32_t d = info.paramBits[0];
 			uint8_t scale = (uint8_t)LD_SCALE(i);
@@ -233,7 +233,7 @@ namespace Gekko
 
 		if (core->regs.msr & MSR_FP)
 		{
-			int i = info.paramBits[4];
+			size_t i = info.paramBits[4];
 			uint32_t EA = core->regs.gpr[info.paramBits[2]];
 			int32_t d = info.paramBits[0];
 			uint8_t scale = (uint8_t)ST_SCALE(i);

@@ -19,7 +19,3 @@
 #ifndef GEKKOCORE_GATHER_BUFFER_RETIRE_TICKS
 #define GEKKOCORE_GATHER_BUFFER_RETIRE_TICKS 10000		//!< The GatherBuffer has an undocumented feature - after a certain number of cycles the data in it is destroyed and it becomes free (WPAR[BNE] = 0)
 #endif
-
-#ifndef GEKKOCORE_JDI
-#define GEKKOCORE_JDI 0				//!< Use the JDI debugging interface
-#endif

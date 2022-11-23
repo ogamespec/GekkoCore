@@ -38,10 +38,6 @@ namespace Gekko
         jitc = new Jitc(this);
 #endif
 
-#if GEKKOCORE_JDI
-        JDI::Hub.AddNode(GEKKO_CORE_JDI_JSON, gekko_init_handlers);
-#endif
-
         gekkoThread = new Thread(GekkoThreadProc, false, this, "GekkoCore");
 
         Reset();
@@ -56,9 +52,6 @@ namespace Gekko
         delete jitc;
 #endif
         delete gatherBuffer;
-#if GEKKOCORE_JDI
-        JDI::Hub.RemoveNode(GEKKO_CORE_JDI_JSON);
-#endif
     }
 
     // Reset processor

@@ -231,3 +231,22 @@ enum class GEKKO_QUANT_TYPE
 
 // Left until all lurking bugs are eliminated.
 #define DOLPHIN_OS_LOCKED_CACHE_ADDRESS 0xE000'0000
+
+// floating point register
+union FPREG
+{
+	double         dbl;
+	uint64_t       uval;
+};
+
+// time-base
+union TBREG
+{
+	volatile int64_t   sval;               // for comparsion
+	volatile uint64_t  uval;               // for incrementing
+	struct
+	{
+		uint32_t     l;                  // for output
+		uint32_t     u;
+	} Part;
+};

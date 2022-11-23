@@ -23,13 +23,6 @@
     <ClCompile Include="..\..\Cache.cpp" />
     <ClCompile Include="..\..\GatherBuffer.cpp" />
     <ClCompile Include="..\..\GekkoCore.cpp" />
-    <ClCompile Include="..\..\GekkoAssembler.cpp" />
-    <ClCompile Include="..\..\GekkoCommands.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\GekkoDecoder.cpp" />
     <ClCompile Include="..\..\GekkoDisasm.cpp" />
     <ClCompile Include="..\..\Interpreter.cpp" />
@@ -127,8 +120,6 @@
     <ClInclude Include="..\..\Config.h" />
     <ClInclude Include="..\..\GatherBuffer.h" />
     <ClInclude Include="..\..\GekkoCore.h" />
-    <ClInclude Include="..\..\GekkoAssembler.h" />
-    <ClInclude Include="..\..\GekkoCommands.h" />
     <ClInclude Include="..\..\GekkoCore.h" />
     <ClInclude Include="..\..\GekkoDecoder.h" />
     <ClInclude Include="..\..\GekkoDefs.h" />
